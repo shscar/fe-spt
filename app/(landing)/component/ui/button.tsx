@@ -18,7 +18,7 @@ export const Button = ({ children, className, variant = "primary", size = "norma
     };
 
     return (
-        <button className={`${baseStyles} ${variants[variant]} ${sizes[size]} ${className}`}>
+        <button {...props} className={`${baseStyles} ${variants[variant]} ${sizes[size]} ${className}`}>
             {children}
         </button>
     );
