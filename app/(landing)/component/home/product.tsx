@@ -2,6 +2,7 @@ import Image from "next/image"
 import Link from "next/link"
 import { FiPlus } from "react-icons/fi"
 import { Button } from "../ui/button"
+import { PriceFormatter } from "../../utils/price-formatter"
 
 const productList = [
     {
@@ -18,7 +19,7 @@ const productList = [
     },
     {
         name: "SportOn Slowlivin",
-        category: "shirt",
+        category: "swimming",
         imgUrl: "sportshirt.png",
         price: 119000
     },
@@ -36,7 +37,7 @@ const productList = [
     },
     {
         name: "SportOn Slowlivin",
-        category: "shirt",
+        category: "swimming",
         imgUrl: "sportshirt-2.png",
         price: 119000
     },
@@ -61,7 +62,7 @@ export const Product = () => {
         </h2>
         <div className="grid grid-cols-4 gap-5">
             {productList.map((product, index) => (
-                <Link href="#" key={index} className="p-1.5 bg-white hover:drop-shadow-xl duration-300">
+                <Link href={`/product/${index}`} key={index} className="p-1.5 bg-white hover:drop-shadow-xl duration-300">
                     <div className="bg-primary-light aspect-square w-full flex justify-center item-center relative">
                         <Image 
                             src={`/img/product/${product.imgUrl}`} alt={product.name} 
@@ -76,7 +77,7 @@ export const Product = () => {
                     <div className="flex justify-between mb-8">
                         <span className="text-gray-500">{product.category}</span>
                         <span className="font-medium text-primary">
-                            {Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', maximumSignificantDigits: 3 }).format(product.price)}
+                            {PriceFormatter(product.price)}
                         </span>
                     </div>
                 </Link>

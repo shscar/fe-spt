@@ -1,30 +1,39 @@
+"use client"
+
 import Image from "next/image"
 import Link from "next/link";
 import { FiSearch, FiShoppingBag } from "react-icons/fi"
+import { CartPopup } from "../ui/cart-popup"
+import { useState } from "react";
 
 export const Header = () => {
+    const [isCartPopupOpen, setIsCartPopupOpen] = useState(false);
+
     return (
         <header>
             <div className="container flex justify-between gap-10 mx-auto py-7">
-                <Image 
-                    src="/img/logo.svg"
-                    alt="Logo"
-                    width={100}
-                    height={100}
-                />
+                <Link href="/">
+                    <Image 
+                        src="/img/logo.svg"
+                        alt="Logo"
+                        width={100}
+                        height={100}
+                    />
+                </Link>
                 <nav className="flex gap-44 font-medium">
                     <Link href="#" className="relative after:content-[''] after:block after:bg-primary after:rounded-full after:h-0.75 after:w-1/2 after:absolute after:left-1/2 after:-translate-x-1/2 after:translate-y-1">Home</Link>
                     <Link href="#category">Category</Link>
                     <Link href="#explore">Explore</Link>
                 </nav>
-                <div className="flex gap-10">
+                <div className="relative flex gap-10">
                     <FiSearch size={24} />
-                    <div className="relative">
+                    <button className="relative cursor-pointer" onClick={() => setIsCartPopupOpen(!isCartPopupOpen)}>
                         <FiShoppingBag size={24} />
                         <div className="bg-primary rounded-full w-3.5 h-3.5 absolute -top-1 -right-1 text-[10px] text-white text-center">
                             3
                         </div>
-                    </div>
+                    </button>
+                    {isCartPopupOpen && <CartPopup />}
                 </div>
             </div>
         </header>

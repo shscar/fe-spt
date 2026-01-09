@@ -1,6 +1,6 @@
-import { Hero } from "./component/hero"
-import { Category } from "./component/category";
-import { Product } from "./component/product";
+import { Hero } from "./component/home/hero"
+import { Category } from "./component/home/category";
+import { Product } from "./component/home/product";
 
 export default function Home() {
   return (
