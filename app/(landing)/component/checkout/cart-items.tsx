@@ -6,7 +6,7 @@ import { cartList } from "../ui/cart-popup"
 import { PriceFormatter } from "../../utils/price-formatter"
 import { FiCreditCard, FiTrash2 } from "react-icons/fi"
 import { CardWithHeader } from "../ui/card-with-header"
-import { useRouter } from "next/router"
+import { useRouter } from "next/navigation"
 
 export const CartItems = () => {
     const {push} = useRouter();
