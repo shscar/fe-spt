@@ -1,18 +1,20 @@
 import { Hero } from "./component/home/hero"
-import { Category } from "./component/home/category";
-import { Product } from "./component/home/product";
+import { CategorySection } from "./component/home/category";
+import { ProductSection } from "./component/home/product";
+import { getAllCategories } from "../services/category.service";
+import { getAllProducts } from "../services/product.service";
 
-export default function Home() {
+export default async function Home() {
+  const [categories, products] = await Promise.all([
+    getAllCategories(),
+    getAllProducts()
+  ]);
+
   return (
-    // <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-    //   <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-    //     <h1>Hello</h1>
-    //   </main>
-    // </div>
     <div>
       <Hero />
-      <Category />
-      <Product />
+      <CategorySection categories={categories} />
+      <ProductSection products={products} />
     </div>
   );
 }
